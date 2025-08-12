@@ -5,8 +5,8 @@ import { improveAnswer, type ImproveAnswerInput } from '@/ai/flows/improve-answe
 import { z } from 'zod';
 
 const generateAnswerSchema = z.object({
-  prompt: z.string().min(10, { message: 'Please enter a prompt with at least 10 characters.' }),
-  category: z.string({ required_error: 'Please select a category.' }).min(1, { message: 'Please select a category.' }),
+  prompt: z.string().min(10, { message: 'Por favor, introduce un prompt de al menos 10 caracteres.' }),
+  category: z.string({ required_error: 'Por favor, selecciona una categoría.' }).min(1, { message: 'Por favor, selecciona una categoría.' }),
 });
 
 export interface GenerateState {
@@ -26,12 +26,12 @@ export async function handleGenerateAnswer(
   if (!validatedFields.success) {
     const errors = validatedFields.error.flatten().fieldErrors;
     return {
-      error: errors.prompt?.[0] || errors.category?.[0] || 'Invalid input.',
+      error: errors.prompt?.[0] || errors.category?.[0] || 'Entrada inválida.',
     };
   }
 
   try {
-    const fullPrompt = `Category: ${validatedFields.data.category}. Prompt: ${validatedFields.data.prompt}`;
+    const fullPrompt = `Categoría: ${validatedFields.data.category}. Prompt: ${validatedFields.data.prompt}`;
     const result = await generateAnswer({ prompt: fullPrompt });
     return {
       data: {
@@ -41,7 +41,7 @@ export async function handleGenerateAnswer(
     };
   } catch (e) {
     console.error(e);
-    return { error: 'An unexpected error occurred. Please try again later.' };
+    return { error: 'Ocurrió un error inesperado. Por favor, inténtalo de nuevo más tarde.' };
   }
 }
 
@@ -64,6 +64,6 @@ export async function handleImproveAnswer(
     };
   } catch (e) {
     console.error(e);
-    return { error: 'An unexpected error occurred while improving the answer.' };
+    return { error: 'Ocurrió un error inesperado al mejorar la respuesta.' };
   }
 }

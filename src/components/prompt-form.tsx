@@ -12,8 +12,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 
 const promptSchema = z.object({
-  prompt: z.string().min(10, { message: 'Please enter a prompt with at least 10 characters.' }),
-  category: z.string({ required_error: 'Please select a category.' }).min(1, { message: 'Please select a category.' }),
+  prompt: z.string().min(10, { message: 'Por favor, introduce un prompt de al menos 10 caracteres.' }),
+  category: z.string({ required_error: 'Por favor, selecciona una categoría.' }).min(1, { message: 'Por favor, selecciona una categoría.' }),
 });
 
 export type PromptFormValues = z.infer<typeof promptSchema>;
@@ -25,11 +25,11 @@ interface Category {
 }
 
 const categories: Category[] = [
-  { value: 'sports', label: 'Sports', icon: Medal },
-  { value: 'culture', label: 'Culture', icon: Palette },
-  { value: 'politics', label: 'Politics', icon: Landmark },
-  { value: 'history', label: 'History', icon: ScrollText },
-  { value: 'gastronomy', label: 'Gastronomy', icon: Utensils },
+  { value: 'deportes', label: 'Deportes', icon: Medal },
+  { value: 'cultura', label: 'Cultura', icon: Palette },
+  { value: 'politica', label: 'Política', icon: Landmark },
+  { value: 'historia', label: 'Historia', icon: ScrollText },
+  { value: 'gastronomia', label: 'Gastronomía', icon: Utensils },
 ];
 
 interface PromptFormProps {
@@ -56,11 +56,11 @@ export function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoría</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a topic..." />
+                        <SelectValue placeholder="Selecciona un tema..." />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -85,10 +85,10 @@ export function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
               name="prompt"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Your Prompt</FormLabel>
+                  <FormLabel>Tu Prompt</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="e.g., What is the history of the Olympic Games?"
+                      placeholder="p. ej., ¿Cuál es la historia de los Juegos Olímpicos?"
                       className="resize-none"
                       rows={1}
                       disabled={isLoading}
@@ -107,12 +107,12 @@ export function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
                 {isLoading ? (
                     <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating...
+                        Generando...
                     </>
                 ) : (
                     <>
                         <Wand2 className="mr-2 h-4 w-4" />
-                        Generate Answer
+                        Generar Respuesta
                     </>
                 )}
             </Button>

@@ -1,24 +1,24 @@
 'use server';
 /**
- * @fileOverview A flow to improve AI answers based on user feedback.
+ * @fileOverview Un flujo para mejorar las respuestas de la IA basándose en el feedback de los usuarios.
  *
- * - improveAnswer - A function that accepts the original prompt, AI response, and user feedback to generate an improved answer.
- * - ImproveAnswerInput - The input type for the improveAnswer function.
- * - ImproveAnswerOutput - The return type for the improveAnswer function.
+ * - improveAnswer - Una función que acepta el prompt original, la respuesta de la IA y el feedback del usuario para generar una respuesta mejorada.
+ * - ImproveAnswerInput - El tipo de entrada para la función improveAnswer.
+ * - ImproveAnswerOutput - El tipo de retorno para la función improveAnswer.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const ImproveAnswerInputSchema = z.object({
-  prompt: z.string().describe('The original user prompt.'),
-  aiResponse: z.string().describe('The AI model\'s initial response to the prompt.'),
-  feedback: z.string().describe('User feedback on the AI response.'),
+  prompt: z.string().describe('El prompt original del usuario.'),
+  aiResponse: z.string().describe('La respuesta inicial del modelo de IA al prompt.'),
+  feedback: z.string().describe('El feedback del usuario sobre la respuesta de la IA.'),
 });
 export type ImproveAnswerInput = z.infer<typeof ImproveAnswerInputSchema>;
 
 const ImproveAnswerOutputSchema = z.object({
-  improvedAnswer: z.string().describe('The improved AI response based on user feedback.'),
+  improvedAnswer: z.string().describe('La respuesta mejorada de la IA basada en el feedback del usuario.'),
 });
 export type ImproveAnswerOutput = z.infer<typeof ImproveAnswerOutputSchema>;
 
@@ -30,14 +30,14 @@ const prompt = ai.definePrompt({
   name: 'improveAnswerPrompt',
   input: {schema: ImproveAnswerInputSchema},
   output: {schema: ImproveAnswerOutputSchema},
-  prompt: `You are an AI assistant that refines its answers based on user feedback.
+  prompt: `Eres un asistente de IA que refina sus respuestas basándose en el feedback de los usuarios.
 
-  Original Prompt: {{{prompt}}}
-  AI Response: {{{aiResponse}}}
-  User Feedback: {{{feedback}}}
+  Prompt Original: {{{prompt}}}
+  Respuesta de la IA: {{{aiResponse}}}
+  Feedback del Usuario: {{{feedback}}}
 
-  Based on the user feedback, provide an improved answer that addresses the user\'s concerns and provides a more accurate or helpful response.
-  Improved Answer:`,
+  Basándote en el feedback del usuario, proporciona una respuesta mejorada que aborde las preocupaciones del usuario y ofrezca una respuesta más precisa o útil.
+  Respuesta Mejorada:`,
 });
 
 const improveAnswerFlow = ai.defineFlow(

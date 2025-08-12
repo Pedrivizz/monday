@@ -27,7 +27,7 @@ interface ResponseCardProps {
 type FeedbackState = 'idle' | 'giving_feedback' | 'submitting' | 'submitted_positive' | 'submitted_improvement';
 
 const feedbackSchema = z.object({
-  feedback: z.string().min(10, { message: 'Please provide at least 10 characters of feedback.' }),
+  feedback: z.string().min(10, { message: 'Por favor, proporciona al menos 10 caracteres de feedback.' }),
 });
 
 export function ResponseCard({ response }: ResponseCardProps) {
@@ -63,13 +63,13 @@ export function ResponseCard({ response }: ResponseCardProps) {
   const renderFeedbackSection = () => {
     switch(feedbackState) {
         case 'submitted_positive':
-            return <div className="text-sm text-green-600 flex items-center gap-2"><CheckCircle className="h-4 w-4" /> Thank you for your feedback!</div>
+            return <div className="text-sm text-green-600 flex items-center gap-2"><CheckCircle className="h-4 w-4" /> ¡Gracias por tu feedback!</div>
         case 'submitted_improvement':
-            return <div className="text-sm text-green-600 flex items-center gap-2"><Sparkles className="h-4 w-4" /> Answer improved! Thanks for helping us get better.</div>
+            return <div className="text-sm text-green-600 flex items-center gap-2"><Sparkles className="h-4 w-4" /> ¡Respuesta mejorada! Gracias por ayudarnos a mejorar.</div>
         case 'giving_feedback':
             return (
                 <div className="w-full space-y-4">
-                    <p className="text-sm text-muted-foreground">We're sorry the answer wasn't helpful. Please tell us how we can improve it.</p>
+                    <p className="text-sm text-muted-foreground">Lamentamos que la respuesta no haya sido útil. Por favor, dinos cómo podemos mejorarla.</p>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(handleFeedbackSubmit)} className="space-y-4">
                             <FormField
@@ -78,7 +78,7 @@ export function ResponseCard({ response }: ResponseCardProps) {
                                 render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
-                                    <Textarea placeholder="The answer should have included..." {...field} />
+                                    <Textarea placeholder="La respuesta debería haber incluido..." {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -86,7 +86,7 @@ export function ResponseCard({ response }: ResponseCardProps) {
                             />
                             <Button type="submit" size="sm">
                                 <Send className="mr-2 h-4 w-4" />
-                                Submit Feedback
+                                Enviar Feedback
                             </Button>
                         </form>
                     </Form>
@@ -95,10 +95,10 @@ export function ResponseCard({ response }: ResponseCardProps) {
         case 'submitting':
             return (
                  <div className="w-full space-y-4">
-                    <p className="text-sm text-muted-foreground">Improving the answer based on your feedback...</p>
+                    <p className="text-sm text-muted-foreground">Mejorando la respuesta según tu feedback...</p>
                     <Button disabled size="sm">
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Submitting...
+                        Enviando...
                     </Button>
                 </div>
             )
@@ -106,9 +106,9 @@ export function ResponseCard({ response }: ResponseCardProps) {
         default:
             return (
                  <>
-                    <span className="text-sm text-muted-foreground mr-4">Was this answer helpful?</span>
+                    <span className="text-sm text-muted-foreground mr-4">¿Fue útil esta respuesta?</span>
                     <Button variant="outline" size="sm" onClick={() => setFeedbackState('submitted_positive')}>
-                        <ThumbsUp className="mr-2 h-4 w-4" /> Yes
+                        <ThumbsUp className="mr-2 h-4 w-4" /> Sí
                     </Button>
                     <Button variant="outline" size="sm" onClick={() => setFeedbackState('giving_feedback')}>
                         <ThumbsDown className="mr-2 h-4 w-4" /> No

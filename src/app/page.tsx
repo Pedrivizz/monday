@@ -33,8 +33,8 @@ const InitialState = () => (
         <div className="flex justify-center items-center mb-4">
             <Bot size={48} className="text-primary/50" />
         </div>
-        <h3 className="text-lg font-semibold text-foreground mb-2 font-headline">Ready for your query</h3>
-        <p>Select a category, type your question, and let our AI provide a concise answer.</p>
+        <h3 className="text-lg font-semibold text-foreground mb-2 font-headline">Listo para tu consulta</h3>
+        <p>Selecciona una categoría, escribe tu pregunta y deja que nuestra IA te dé una respuesta concisa.</p>
     </CardContent>
   </Card>
 )
@@ -62,9 +62,9 @@ export default function Home() {
   return (
     <main className="container mx-auto max-w-3xl px-4 py-8 sm:py-12 md:py-16">
       <header className="text-center mb-10">
-        <h1 className="text-5xl md:text-6xl font-bold font-headline text-primary">Monday</h1>
+        <h1 className="text-5xl md:text-6xl font-bold font-headline text-primary">Lunes</h1>
         <p className="text-lg text-muted-foreground mt-2 font-body">
-          Your concise guide to everything.
+          Tu guía concisa para todo.
         </p>
       </header>
 
@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       <footer className="text-center mt-12 text-sm text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Monday. Powered by AI.</p>
+        <p>&copy; {new Date().getFullYear()} Lunes. Potenciado por IA.</p>
       </footer>
     </main>
   );

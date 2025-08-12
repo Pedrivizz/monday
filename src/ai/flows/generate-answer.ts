@@ -1,24 +1,24 @@
 'use server';
 
 /**
- * @fileOverview This file defines a Genkit flow for generating concise AI answers to user prompts.
+ * @fileOverview Este archivo define un flujo de Genkit para generar respuestas de IA concisas a los prompts de los usuarios.
  *
- * - generateAnswer - The function to generate a concise answer based on the user prompt.
- * - GenerateAnswerInput - The input type for the generateAnswer function.
- * - GenerateAnswerOutput - The output type for the generateAnswer function.
+ * - generateAnswer - La función para generar una respuesta concisa basada en el prompt del usuario.
+ * - GenerateAnswerInput - El tipo de entrada para la función generateAnswer.
+ * - GenerateAnswerOutput - El tipo de salida para la función generateAnswer.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateAnswerInputSchema = z.object({
-  prompt: z.string().describe('The user prompt to generate an answer for.'),
+  prompt: z.string().describe('El prompt del usuario para el que se va a generar una respuesta.'),
 });
 
 export type GenerateAnswerInput = z.infer<typeof GenerateAnswerInputSchema>;
 
 const GenerateAnswerOutputSchema = z.object({
-  answer: z.string().describe('The concise AI-generated answer.'),
+  answer: z.string().describe('La respuesta concisa generada por la IA.'),
 });
 
 export type GenerateAnswerOutput = z.infer<typeof GenerateAnswerOutputSchema>;
@@ -31,11 +31,11 @@ const prompt = ai.definePrompt({
   name: 'generateAnswerPrompt',
   input: {schema: GenerateAnswerInputSchema},
   output: {schema: GenerateAnswerOutputSchema},
-  prompt: `You are an AI assistant that provides concise and informative answers to user prompts.
+  prompt: `Eres un asistente de IA que proporciona respuestas concisas e informativas a los prompts de los usuarios.
 
-  User Prompt: {{{prompt}}}
+  Prompt del Usuario: {{{prompt}}}
 
-  Answer:`, // Asking the LLM to generate an Answer
+  Respuesta:`, // Pidiendo al LLM que genere una Respuesta
 });
 
 const generateAnswerFlow = ai.defineFlow(
