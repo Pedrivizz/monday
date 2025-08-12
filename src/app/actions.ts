@@ -5,7 +5,7 @@ import { improveAnswer, type ImproveAnswerInput } from '@/ai/flows/improve-answe
 import { z } from 'zod';
 
 const generateAnswerSchema = z.object({
-  prompt: z.string().min(10, { message: 'Por favor, introduce un prompt de al menos 10 caracteres.' }),
+  prompt: z.string().min(10, { message: 'Por favor, introduce una consulta de al menos 10 caracteres.' }),
 });
 
 export interface GenerateState {

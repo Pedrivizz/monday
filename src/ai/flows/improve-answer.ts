@@ -30,13 +30,13 @@ const prompt = ai.definePrompt({
   name: 'improveAnswerPrompt',
   input: {schema: ImproveAnswerInputSchema},
   output: {schema: ImproveAnswerOutputSchema},
-  prompt: `Eres un asistente de IA que refina sus respuestas basándose en el feedback de los usuarios.
+  prompt: `Eres un asistente de IA que refina sus respuestas en español basándose en el feedback de los usuarios.
 
-  Prompt Original: {{{prompt}}}
+  Consulta Original: {{{prompt}}}
   Respuesta de la IA: {{{aiResponse}}}
   Feedback del Usuario: {{{feedback}}}
 
-  Basándote en el feedback del usuario, proporciona una respuesta mejorada que aborde las preocupaciones del usuario y ofrezca una respuesta más precisa o útil.
+  Basándote en el feedback del usuario, proporciona una respuesta mejorada en español que aborde las preocupaciones del usuario y ofrezca una respuesta más precisa o útil.
   Respuesta Mejorada:`,
 });
 
