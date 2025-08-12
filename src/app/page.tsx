@@ -1,14 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import type { ComponentType } from 'react';
 import { handleGenerateAnswer, type GenerateState } from '@/app/actions';
 import { PromptForm, type PromptFormValues } from '@/components/prompt-form';
 import { ResponseCard, type ResponseData } from '@/components/response-card';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/hooks/use-toast';
-import { Bot, Lightbulb } from 'lucide-react';
+import { Bot } from 'lucide-react';
 
 const ResponseSkeleton = () => (
   <Card>
@@ -34,7 +33,7 @@ const InitialState = () => (
             <Bot size={48} className="text-primary/50" />
         </div>
         <h3 className="text-lg font-semibold text-foreground mb-2 font-headline">Listo para tu consulta</h3>
-        <p>Selecciona una categoría, escribe tu pregunta y deja que nuestra IA te dé una respuesta concisa.</p>
+        <p>Escribe tu pregunta y deja que nuestra IA te dé una respuesta concisa.</p>
     </CardContent>
   </Card>
 )

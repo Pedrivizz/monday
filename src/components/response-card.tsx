@@ -12,11 +12,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from './ui/badge';
 
 export interface ResponseData {
   prompt: string;
-  category: string;
   answer: string;
 }
 
@@ -121,9 +119,8 @@ export function ResponseCard({ response }: ResponseCardProps) {
   return (
     <Card className="shadow-lg animate-in fade-in duration-500">
       <CardHeader>
-        <CardTitle className="font-headline text-2xl flex justify-between items-start">
-            <span>{response.prompt}</span>
-            <Badge variant="secondary" className="capitalize text-sm whitespace-nowrap ml-4">{response.category}</Badge>
+        <CardTitle className="font-headline text-2xl">
+            {response.prompt}
         </CardTitle>
       </CardHeader>
       <CardContent>

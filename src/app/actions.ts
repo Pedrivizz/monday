@@ -6,13 +6,11 @@ import { z } from 'zod';
 
 const generateAnswerSchema = z.object({
   prompt: z.string().min(10, { message: 'Por favor, introduce un prompt de al menos 10 caracteres.' }),
-  category: z.string({ required_error: 'Por favor, selecciona una categoría.' }).min(1, { message: 'Por favor, selecciona una categoría.' }),
 });
 
 export interface GenerateState {
   data?: {
     prompt: string;
-    category: string;
     answer: string;
   } | null;
   error?: string | null;
@@ -26,13 +24,12 @@ export async function handleGenerateAnswer(
   if (!validatedFields.success) {
     const errors = validatedFields.error.flatten().fieldErrors;
     return {
-      error: errors.prompt?.[0] || errors.category?.[0] || 'Entrada inválida.',
+      error: errors.prompt?.[0] || 'Entrada inválida.',
     };
   }
 
   try {
-    const fullPrompt = `Categoría: ${validatedFields.data.category}. Prompt: ${validatedFields.data.prompt}`;
-    const result = await generateAnswer({ prompt: fullPrompt });
+    const result = await generateAnswer({ prompt: validatedFields.data.prompt });
     return {
       data: {
         ...validatedFields.data,
