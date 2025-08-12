@@ -36,7 +36,7 @@ export function PromptForm({ onSubmit, isLoading }: PromptFormProps) {
           name="prompt"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Tu Prompt</FormLabel>
+              <FormLabel>Ingresa tu duda</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="p. ej., ¿Cuál es la historia de los Juegos Olímpicos?"
