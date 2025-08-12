@@ -10,7 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Textarea } from '@/components/ui/textarea';
 
 const promptSchema = z.object({
-  prompt: z.string().min(10, { message: 'Por favor, introduce un prompt de al menos 10 caracteres.' }),
+  prompt: z.string().min(10, { message: 'Por favor, introduce una consulta de al menos 10 caracteres.' }),
 });
 
 export type PromptFormValues = z.infer<typeof promptSchema>;

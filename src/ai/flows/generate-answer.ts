@@ -31,11 +31,11 @@ const prompt = ai.definePrompt({
   name: 'generateAnswerPrompt',
   input: {schema: GenerateAnswerInputSchema},
   output: {schema: GenerateAnswerOutputSchema},
-  prompt: `Eres un asistente de IA que proporciona respuestas concisas e informativas a los prompts de los usuarios.
+  prompt: `Eres un asistente de IA que proporciona respuestas concisas e informativas en español a las consultas de los usuarios.
 
-  Prompt del Usuario: {{{prompt}}}
+  Consulta del Usuario: {{{prompt}}}
 
-  Respuesta:`, // Pidiendo al LLM que genere una Respuesta
+  Respuesta:`,
 });
 
 const generateAnswerFlow = ai.defineFlow(
